@@ -1,0 +1,57 @@
+# PowerBI-Sales-Analysis
+Power BI Sales Analysis project involving data cleaning, visualization, DAX calculations, and business insights using a 1,000+ row sales dataset.
+Q1 — Data cleaning steps
+Region null values deleted
+Product null values deleted
+Profit calculated as Sales − Cost
+Cost null values replaced with average Cost
+OrderDate handling and standardization
+Duplicate removal
+
+Q2 — All 3 required visualizations
+Region Pie Chart
+Top 5 Products Column Chart
+Profit Trend Line Chart
+
+1. Pie Chart – Order Distribution by Region
+
+Visual: Pie Chart
+Legend:Region  Values:Count of OrderID
+Title:Order Distribution by Region
+This shows how orders are distributed across different regions.
+
+2. Column Chart – Top 5 Trending Products
+
+Visual: Clustered Column Chart
+
+X-axis:Product  Y-axis: Count of OrderID
+Apply Top 5 Filter
+Open the Filters pane.
+Select Product.
+Select Top N.
+Enter 5.
+Under By value, select Count of OrderID.
+Click Apply filter.
+Sort the chart in Descending order.
+
+Visual: Line Chart
+
+X-axis:OrderDate Y-axis:Sum of Profit
+
+
+Q3 — All required DAX
+EastRegionOrders
+EastRegionOrders = 
+FILTER(
+    SalesData_1000Rows_WithIssues_copy,
+    SalesData_1000Rows_WithIssues_copy[Region] = "East"
+)
+ProfitCostDifference
+EastRegionOrders = 
+FILTER(
+    SalesData_1000Rows_WithIssues_copy,
+    SalesData_1000Rows_WithIssues_copy[Region] = "East"
+)
+
+TotalProfit
+Total Profit Earned = SUM(SalesData_1000Rows_WithIssues_copy[Profit])
